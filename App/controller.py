@@ -67,6 +67,7 @@ def loadBooks(ctrlr):
     input_file = csv.DictReader(open(booksfile, encoding='utf-8'))
     for book in input_file:
         model.addBook(ctrlr['model'], book)
+        model.addBookTitle(ctrlr["model"],book["title"],book)
 
 
 def loadTags(ctrlr):
@@ -155,12 +156,12 @@ def getBooksYear(ctrlr, year):
     return books
 
 
-def getBooksByTitle(ctrlr, title):
+def getBooksByTitle(ctrlr, title, book):
     # TODO lab 6, conectar con la funcion model.getBooksByTitle()
     """
     Completar la descripcion de getBooksByTittle
     """
-    pass
+    return model.getBookByTitle(ctrlr,title,book)
 
 
 def titlesSize(ctrlr):
@@ -168,4 +169,4 @@ def titlesSize(ctrlr):
     """
     Completar la descripcion de titlesSize
     """
-    pass
+    return model.titlesSize(ctrlr)

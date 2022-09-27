@@ -23,9 +23,10 @@
  * Dario Correal - Version inicial
  """
 
+
 import config as cf
 import sys
-import controller
+import controller 
 from DISClib.ADT import list as lt
 assert cf
 
@@ -114,7 +115,13 @@ def printBooksbyTitle(books):
     """
     Completar la descripcion de printBooksbyTitle
     """
-    pass
+    size = lt.size(books)
+    print('Se encontraron: ' + str(lt.size(books)) + ' Libros')
+    for book in lt.iterator(books):
+            print(book['title'])
+            print("\n")
+    else:
+        print("No se econtraron libros.\n")
 
 # Menu de opciones
 
@@ -126,6 +133,7 @@ def printMenu():
     print("3- Consultar los libros de un año")
     print("4- Consultar los libros de un autor")
     print("5- Consultar los Libros por etiqueta")
+    print("6- Comsultar los Libros por titulo")
     # TODO lab 6, agregar la opcion nueva del menu
     print("0- Salir")
 
@@ -146,6 +154,7 @@ while True:
         print('Libros cargados: ' + str(controller.booksSize(ctrlr)))
         print('Autores cargados: ' + str(controller.authorsSize(ctrlr)))
         print('Géneros cargados: ' + str(controller.tagsSize(ctrlr)))
+        print("titulos cargados" + str(controller.titlesSize(ctrlr)))
 
     elif int(inputs[0]) == 3:
         number = input("Buscando libros del año?: ")
@@ -166,8 +175,9 @@ while True:
         # TODO lab 6, conectar con las funciones del controlador e imprimir
         # controller.getBooksByTitle(ctrlr, title)
         # controller.titleSize(ctrlr)
-        pass
-
+        label = input("escriba el titulo que desea encontrar: ")
+        books = controller.getBooksByTag(ctrlr, label)
+        printBooksbyTitle(books)
     elif int(inputs[0]) == 0:
         break
 
